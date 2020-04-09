@@ -1,4 +1,6 @@
-let g:coc_global_extensions = ['coc-python', 'coc-emmet','coc-go','coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-vimlsp', 'coc-tailwindcss', 'coc-tslint', 'coc-lists', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-todolist', 'coc-yaml', 'coc-tasks']
+let g:coc_global_extensions = ['coc-python', 'coc-sql','coc-emmet','coc-go','coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-todolist', 'coc-yaml', 'coc-tasks']
+" let g:coc_node_path = '/path/to/node'
+
 " if hidden is not set, TextEdit might fail.
 set hidden
 " Some server have issues with backup files, see #649
@@ -118,19 +120,18 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-nmap <silent> <C-c> <Plug>(coc-cursors-position)
-nmap <silent> <C-d> <Plug>(coc-cursors-word)
-xmap <silent> <C-d> <Plug>(coc-cursors-range)
+" nmap <silent> <C-c> <Plug>(coc-cursors-position)
+" nmap <silent> <C-d> <Plug>(coc-cursors-word)
+" xmap <silent> <C-d> <Plug>(coc-cursors-range)
 " use normal command like `<leader>xi(`
-nmap <leader>x  <Plug>(coc-cursors-operator)
+" nmap <leader>x  <Plug>(coc-cursors-operator)
 
 
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
-" nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 "
 " coc-go
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
-autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
-autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
-autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
+autocmd FileType go nmap gtj :<C-u>CocCommand go.tags.add json<cr>
+autocmd FileType go nmap gty :<C-u>CocCommand go.tags.add yaml<cr>
+autocmd FileType go nmap gtx :<C-u>CocCommand go.tags.clear<cr>

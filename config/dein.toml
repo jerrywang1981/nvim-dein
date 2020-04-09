@@ -32,13 +32,34 @@ hook_add = 'source ~/.config/nvim/config/lightline.vim'
 repo = 'Yggdroot/LeaderF'
 build = './install.sh'
 hook_add = '''
-  let g:Lf_ShortcutF = '<c-p>'
+
+  let g:Lf_HideHelp = 1
+  let g:Lf_UseCache = 0
+  let g:Lf_UseVersionControlTool = 0
+  let g:Lf_IgnoreCurrentBufferName = 1
+  let g:Lf_ShowDevIcons=0
+
+  let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+  let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+
+
+
+  let g:Lf_ShortcutF = "<leader>ff"
+  noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+  noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+  noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+  noremap <leader>fs :<C-U><C-R>=printf("Leaderf rg --stayOpen %s", "")<CR><CR>
+
+  xnoremap <leader>fs :<C-U><C-R>=printf("Leaderf! rg --stayOpen -F -e %s ", leaderf#Rg#visual())<CR>
+
   let g:Lf_CommandMap = {'<Tab>': ['<ESC>']}
   let g:Lf_DefaultMode = 'NameOnly'
+  let g:Lf_PythonVersion=3
   let g:Lf_WindowHeight = 0.3
   let g:Lf_WorkingDirectoryMode = 'Ac'
   let g:Lf_GtagsAutoGenerate = 0
   let g:Lf_Gtagslabel = 'native-pygments'
+
   let g:Lf_WildIgnore = {
     \ 'dir': ['.svn','.git','.hg', 'node_modules', 'dist'],
     \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
@@ -53,10 +74,6 @@ hook_add = '''
     \ "--glob=!dist/*",
     \ ]
 
-  noremap <c-n> :Leaderf --nameOnly mru<cr>
-  noremap ƒ :LeaderfFunction<cr>
-  noremap † :Leaderf --nameOnly tag<cr>
-  noremap ß :Leaderf rg --stayOpen<CR>
 '''
 
 

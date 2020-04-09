@@ -1,6 +1,15 @@
 if &compatible
   set nocompatible
 endif
+
+let has_machine_specific_file = 1
+if empty(glob('~/.config/nvim/_machine_specific.vim'))
+	let has_machine_specific_file = 0
+	silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
+endif
+source ~/.config/nvim/_machine_specific.vim
+
+
 " Add the dein installation directory into runtimepath
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
@@ -29,7 +38,7 @@ if dein#load_state('~/.cache/dein')
   endif
   call dein#add('wsdjeg/dein-ui.vim')
   call dein#add('easymotion/vim-easymotion')
-  call dein#add('justinmk/vim-sneak')
+  " call dein#add('justinmk/vim-sneak')
   call dein#add('tomtom/tlib_vim')
   call dein#add('tpope/vim-dispatch')
   call dein#add('kshenoy/vim-signature')
@@ -48,6 +57,7 @@ if dein#load_state('~/.cache/dein')
 
   call dein#add('dracula/vim', {'name': 'dracula', 'normalized_name': 'dracula'})
 
+  call dein#add('Konfekt/FastFold')
   call dein#add('wincent/terminus')
   call dein#add('haya14busa/incsearch.vim')
   call dein#add('haya14busa/incsearch-fuzzy.vim')
@@ -70,7 +80,7 @@ set foldlevel=99
 set noswapfile
 set autoindent
 set encoding=utf-8
-set clipboard+=unnamed  " use the clipboards of vim and win
+set clipboard+=unnamedplus  " use the clipboards of vim and win
 set go+=a               " Visual selection automatically copied to the clipboard
 set number
 set relativenumber
@@ -144,9 +154,9 @@ source ~/.config/nvim/config/mapping.vim
 
 
 
-let g:loaded_python_provider = 1
-let g:python3_host_prog  = '/usr/local/Cellar/python/3.7.6_1/bin/python3'
-let g:python_host_prog  = '/usr/bin/python'
+" let g:loaded_python_provider = 1
+" let g:python3_host_prog  = '/usr/local/Cellar/python/3.7.6_1/bin/python3'
+" let g:python_host_prog  = '/usr/bin/python'
 
 
 
@@ -181,6 +191,25 @@ colorscheme dracula
 let $NVIM_COC_LOG_LEVEL = 'debug'
 " let g:coc_node_args = ['--nolazy', '--inspect-brk=6046']
 "
+
+" fastfold
+
+nmap zuz <Plug>(FastFoldUpdate)
+let g:fastfold_savehook = 1
+let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+let g:fastfold_fold_movement_commands = [']z', '[z', 'ze', 'zu']
+let g:markdown_folding = 1
+let g:tex_fold_enabled = 1
+let g:vimsyn_folding = 'af'
+let g:xml_syntax_folding = 1
+let g:javaScript_fold = 1
+let g:sh_fold_enabled= 7
+let g:ruby_fold = 1
+let g:perl_fold = 1
+let g:perl_fold_blocks = 1
+let g:r_syntax_folding = 1
+let g:rust_fold = 1
+let g:php_folding = 1
 
 
 
@@ -236,3 +265,17 @@ let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml']
 " let g:ale_lint_on_filetype_changed = 0
 " let g:ale_sign_column_always = 1
 
+
+
+nmap s         <Plug>(easymotion-s2)
+xmap s         <Plug>(easymotion-s2)
+omap z         <Plug>(easymotion-s2)
+nmap <leader><leader>s <Plug>(easymotion-sn)
+xmap <leader><leader>s <Plug>(easymotion-sn)
+omap <leader><leader>z <Plug>(easymotion-sn)
+
+
+" Open the _machine_specific.vim file if it has just been created
+if has_machine_specific_file == 0
+	exec "e ~/.config/nvim/_machine_specific.vim"
+endif
