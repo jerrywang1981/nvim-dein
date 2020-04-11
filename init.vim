@@ -33,12 +33,9 @@ if dein#load_state('~/.cache/dein')
     call dein#add('roxma/vim-hug-neovim-rpc')
   else
     call dein#add('cpiger/NeoDebug')
-    " call dein#add('beeender/Comrade')
-    " call dein#add('Shougo/deoplete.nvim', { 'build': ':UpdateRemotePlugins' })
   endif
   call dein#add('wsdjeg/dein-ui.vim')
   call dein#add('easymotion/vim-easymotion')
-  " call dein#add('justinmk/vim-sneak')
   call dein#add('tomtom/tlib_vim')
   call dein#add('tpope/vim-dispatch')
   call dein#add('kshenoy/vim-signature')
@@ -46,7 +43,6 @@ if dein#load_state('~/.cache/dein')
   call dein#add('tpope/vim-unimpaired')
   call dein#add('tpope/vim-repeat')
   call dein#add('mbbill/undotree')
-  " call dein#add('sjl/gundo.vim')
   call dein#add('ConradIrwin/vim-bracketed-paste')
 
   call dein#add('wellle/targets.vim')
@@ -55,7 +51,12 @@ if dein#load_state('~/.cache/dein')
   call dein#add('skywind3000/asynctasks.vim')
   call dein#add('skywind3000/asyncrun.vim')
 
+  " call dein#add('morhetz/gruvbox')
   call dein#add('dracula/vim', {'name': 'dracula', 'normalized_name': 'dracula'})
+
+  call dein#add('itchyny/lightline.vim')
+  call dein#add('mengelbrecht/lightline-bufferline')
+
 
   call dein#add('Konfekt/FastFold')
   call dein#add('wincent/terminus')
@@ -74,7 +75,7 @@ filetype plugin indent on
 syntax enable
 set path+=**
 set updatetime=5000
-set directory=~/tmp,/tmp
+" set directory=~/tmp,/tmp
 set foldmethod=indent
 set foldlevel=99
 set noswapfile
@@ -135,12 +136,12 @@ endif
 
 set t_Co=256
 
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-  \,sm:block-blinkwait175-blinkoff150-blinkon175
+" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  " \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+  " \,sm:block-blinkwait175-blinkoff150-blinkon175
 
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*/node_modules/*
 " python-mode
@@ -152,7 +153,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*/node_modules/*
 "--------------------mapping-------
 source ~/.config/nvim/config/mapping.vim
 
-
+source ~/.config/nvim/config/lightline.vim
 
 " let g:loaded_python_provider = 1
 " let g:python3_host_prog  = '/usr/local/Cellar/python/3.7.6_1/bin/python3'
@@ -231,42 +232,6 @@ let g:asyncrun_bell = 1
 let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml']
 
 
-"----------------------- ale --------------------
-" let g:ale_linters = {
-" \   'c++': ['clang'],
-" \   'c': ['clang'],
-" \}
-" let g:ale_linters_explicit = 1
-" let g:ale_completion_enabled = 1
-" let g:ale_completion_delay = 500
-" let g:ale_echo_delay = 20
-" let g:ale_lint_delay = 500
-" let g:ale_echo_msg_format = '[%linter%] %code: %%s'
-" let g:ale_lint_on_insert_leave = 0
-
-" let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-" let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
-" let g:ale_c_cppcheck_options = ''
-" let g:ale_cpp_cppcheck_options = ''
-" let g:ale_sign_error = "\ue009\ue009"
-" hi! clear SpellBad
-" hi! clear SpellCap
-" hi! clear SpellRare
-" hi! SpellBad gui=undercurl guisp=red
-" hi! SpellCap gui=undercurl guisp=blue
-" hi! SpellRare gui=undercurl guisp=magenta
-" nmap <silent> [W <Plug>(ale_first)
-" nmap <silent> [w <Plug>(ale_previous)
-" nmap <silent> ]w <Plug>(ale_next)
-" nmap <silent> ]W <Plug>(ale_last)
-" let g:ale_lint_on_text_changed = 'never'
-" let g:ale_lint_on_save = 1
-" let g:ale_lint_on_enter = 0
-" let g:ale_lint_on_filetype_changed = 0
-" let g:ale_sign_column_always = 1
-
-
-
 nmap s         <Plug>(easymotion-s2)
 xmap s         <Plug>(easymotion-s2)
 omap z         <Plug>(easymotion-s2)
@@ -274,6 +239,8 @@ nmap <leader><leader>s <Plug>(easymotion-sn)
 xmap <leader><leader>s <Plug>(easymotion-sn)
 omap <leader><leader>z <Plug>(easymotion-sn)
 
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " Open the _machine_specific.vim file if it has just been created
 if has_machine_specific_file == 0

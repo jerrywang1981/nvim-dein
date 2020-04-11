@@ -1,4 +1,4 @@
-let g:coc_global_extensions = ['coc-python', 'coc-sql','coc-emmet','coc-go','coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-todolist', 'coc-yaml', 'coc-tasks']
+let g:coc_global_extensions = ['coc-python', 'coc-sql','coc-emmet','coc-go','coc-html', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-todolist', 'coc-yaml', 'coc-tasks']
 " let g:coc_node_path = '/path/to/node'
 
 " if hidden is not set, TextEdit might fail.
@@ -132,6 +132,6 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 "
 " coc-go
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
-autocmd FileType go nmap gtj :<C-u>CocCommand go.tags.add json<cr>
-autocmd FileType go nmap gty :<C-u>CocCommand go.tags.add yaml<cr>
-autocmd FileType go nmap gtx :<C-u>CocCommand go.tags.clear<cr>
+" autocmd FileType go nmap gtj :<C-u>CocCommand go.tags.add json<cr>
+" autocmd FileType go nmap gty :<C-u>CocCommand go.tags.add yaml<cr>
+" autocmd FileType go nmap gtx :<C-u>CocCommand go.tags.clear<cr>

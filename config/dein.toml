@@ -14,21 +14,6 @@ hook_add = '''
 
 
 [[plugins]]
-repo = 'itchyny/lightline.vim'
-hook_add = 'source ~/.config/nvim/config/lightline.vim'
-
-
-[[plugins]]
-repo = 'mengelbrecht/lightline-bufferline'
-hook_add = 'source ~/.config/nvim/config/lightline.vim'
-
-
-# [[plugins]]
-# repo = 'lyokha/vim-xkbswitch'
-# hook_add = 'let g:XkbSwitchEnabled = 1'
-
-
-[[plugins]]
 repo = 'Yggdroot/LeaderF'
 build = './install.sh'
 hook_add = '''
@@ -42,15 +27,12 @@ hook_add = '''
   let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
   let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-
-
-  let g:Lf_ShortcutF = "<leader>ff"
-  noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-  noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+  let g:Lf_ShortcutF = "<c-p>"
+  noremap <c-m> :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
   noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
   noremap <leader>fs :<C-U><C-R>=printf("Leaderf rg --stayOpen %s", "")<CR><CR>
-
   xnoremap <leader>fs :<C-U><C-R>=printf("Leaderf! rg --stayOpen -F -e %s ", leaderf#Rg#visual())<CR>
+  noremap go :<C-U>Leaderf! rg --recall<CR>
 
   let g:Lf_CommandMap = {'<Tab>': ['<ESC>']}
   let g:Lf_DefaultMode = 'NameOnly'
@@ -61,16 +43,17 @@ hook_add = '''
   let g:Lf_Gtagslabel = 'native-pygments'
 
   let g:Lf_WildIgnore = {
-    \ 'dir': ['.svn','.git','.hg', 'node_modules', 'dist'],
+    \ 'dir': ['.svn','.git','.hg', 'node_modules', 'dist', 'venv'],
     \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
     \}
   let g:Lf_MruWildIgnore = {
-    \ 'dir': [],
-    \ 'file': []
+    \ 'dir': ['.svn','.git','.hg', 'node_modules', 'dist', 'venv'],
+    \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
     \}
   let g:Lf_RgConfig = [
     \ "--max-columns=300",
     \ "--glob=!node_modules/*",
+    \ "--glob=!venv/*",
     \ "--glob=!dist/*",
     \ ]
 
@@ -93,30 +76,11 @@ hook_add = '''
 repo = 'scrooloose/nerdcommenter'
 hook_add = 'source ~/.config/nvim/config/nerdcommenter.vim'
 
-# [[plugins]]
-# repo = 'skywind3000/vim-keysound'
-# hook_add = '''
-# let g:keysound_theme = 'typewriter'
-# let g:keysound_py_version = 3
-# '''
 
-# [[plugins]]
-# repo = 'ludovicchabant/vim-gutentags'
-# hook_source = '''
-  # source ~/.vim/config/vim-gutentags.vim
-# '''
-
-
-# [[plugins]]
-# repo = 'skywind3000/gutentags_plus'
 
 
 [[plugins]]
 repo = 'MarcWeber/vim-addon-mw-utils'
-
-
-[[plugins]]
-repo = 'HerringtonDarkholme/yats.vim'
 
 
 [[plugins]]

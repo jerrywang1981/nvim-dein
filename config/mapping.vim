@@ -13,21 +13,23 @@ inoremap <c-h> <Left>
 inoremap <c-j> <Down>
 inoremap <c-k> <Up>
 inoremap <c-l> <Right>
-vmap <up> <Nop>
-vmap <down> <Nop>
-vmap <left> <Nop>
-vmap <right> <Nop>
-
 
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+vmap <up> <Nop>
+vmap <down> <Nop>
+vmap <left> <Nop>
+vmap <right> <Nop>
 
-let g:yankring_replace_n_pkey = '<Char-8804>'
-let g:yankring_replace_n_nkey = '<Char-8805>'
+
+
+" nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
+" let g:yankring_replace_n_pkey = '<Char-8804>'
+" let g:yankring_replace_n_nkey = '<Char-8805>'
 
 
 
@@ -58,18 +60,18 @@ map g# <Plug>(incsearch-nohl-g#)
 
 
 
-function! s:config_fuzzyall(...) abort
-  return extend(copy({
-  \   'converters': [
-  \     incsearch#config#fuzzy#converter(),
-  \     incsearch#config#fuzzyspell#converter()
-  \   ],
-  \ }), get(a:, 1, {}))
-endfunction
-
-noremap <silent><expr> z/ incsearch#go(<SID>config_fuzzyall())
-noremap <silent><expr> z? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
-noremap <silent><expr> zg? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
+" function! s:config_fuzzyall(...) abort
+  " return extend(copy({
+  " \   'converters': [
+  " \     incsearch#config#fuzzy#converter(),
+  " \     incsearch#config#fuzzyspell#converter()
+  " \   ],
+  " \ }), get(a:, 1, {}))
+" endfunction
+"
+" noremap <silent><expr> z/ incsearch#go(<SID>config_fuzzyall())
+" noremap <silent><expr> z? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
+" noremap <silent><expr> zg? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
 
 
 "--------undo toggle---------
