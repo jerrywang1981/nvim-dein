@@ -29,10 +29,6 @@ on_ft = 'json'
 hook_add = 'let g:vim_json_syntax_conceal = 0'
 
 
-[[plugins]]
-repo = 'Vimjas/vim-python-pep8-indent'
-on_ft = 'python'
-
 
 [[plugins]]
 repo = 'honza/dockerfile.vim'
@@ -74,13 +70,13 @@ repo = 'junegunn/vim-emoji'
 on_ft = ['markdown','vim']
 
 
-[[plugins]]
-repo = 'davidhalter/jedi-vim'
-on_ft = 'python'
+# [[plugins]]
+# repo = 'davidhalter/jedi-vim'
+# on_ft = 'python'
 #
-[[plugins]]
-repo = 'fs111/pydoc.vim'
-on_ft = 'python'
+# [[plugins]]
+# repo = 'fs111/pydoc.vim'
+# on_ft = 'python'
 
 # [[plugins]]
 # repo = 'alfredodeza/pytest.vim'
@@ -163,6 +159,8 @@ build = 'cd app & yarn install'
 repo = 'Yggdroot/indentLine'
 on_ft = ['python','html','css','vim','javascript','jsx','javascript.jsx','vue', 'cpp']
 hook_source = '''
+  let g:indentLine_color_term = 239
+  let g:indentLine_color_gui = '#338833'
   let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','tagbar','vista_kind']
 '''
 
