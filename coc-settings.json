@@ -31,8 +31,8 @@
   "tsserver.log": "verbose",
   "tsserver.npm": "/usr/local/bin/",
   "tsserver.trace.server": "verbose",
-  "python.linting.pylintEnabled": false,
-  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": false,
   "python.linting.enabled": true,
   "python.jediEnabled": false,
   "go.goplsOptions": {

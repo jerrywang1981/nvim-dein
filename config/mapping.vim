@@ -75,7 +75,8 @@ map g# <Plug>(incsearch-nohl-g#)
 
 
 "--------undo toggle---------
-noremap <silent> L :UndotreeToggle<CR>
+noremap <silent> ∞ :UndotreeToggle<CR>
+noremap <silent> <leader><leader>5 :UndotreeToggle<CR>
 let g:undotree_DiffAutoOpen = 1
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators = 1

@@ -132,6 +132,7 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 "
 " coc-go
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd BufWritePre *.go :call CocAction('format')
 " autocmd FileType go nmap gtj :<C-u>CocCommand go.tags.add json<cr>
 " autocmd FileType go nmap gty :<C-u>CocCommand go.tags.add yaml<cr>
 " autocmd FileType go nmap gtx :<C-u>CocCommand go.tags.clear<cr>
