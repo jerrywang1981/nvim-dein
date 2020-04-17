@@ -6,6 +6,12 @@
   "suggest.echodocSupport": true,
 	"suggest.snippetIndicator": "⭐︎",
 	"suggest.enablePreview": true,
+  "coc.preferences.extensionUpdateCheck": "weekly",
+  "yank.highlight.enable": true,
+
+  "java.maven.downloadSources": true,
+  "java.import.maven.enabled": true,
+
   "diagnostic.errorSign": "😡",
 	"diagnostic.warningSign": "🤔",
   "prettier.eslintIntegration": true,
@@ -50,6 +56,6 @@
 			"args": ["start"],
 			"filetypes": ["sh"],
 			"ignoredRootPaths": ["~"]
-		},
-  },
+		}
+  }
 }

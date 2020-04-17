@@ -2,9 +2,12 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
-      \             ['fugitive', 'gitgutter'],['filename', 'cocstatus', 'currentfunction']],
+      \             ['gitbranch', 'gitgutter'],['filename', 'cocstatus', 'currentfunction']],
       \   'right':[ ['lineinfo'],
-      \             ['percent'], ['fileformat','fileencoding', 'filetype']],
+      \             ['percent'],
+      \             ['fileformat','fileencoding', 'filetype'],
+      \             ['tnt']
+      \             ],
       \ },
       \ 'inactive': {
       \   'left': [['mode', 'paste'], ['filename']],
@@ -16,39 +19,29 @@ let g:lightline = {
       \ },
       \ 'component': {
       \   'lineinfo': '%3l:%-2v',
+      \   'tnt': '%#TNTColor#%{TNT()}',
       \ },
       \ 'component_expand': {
       \   'buffers': 'lightline#bufferline#buffers',
       \ },
       \ 'component_function': {
-      \   'fugitive': 'LightLineFugitive',
+      \   'gitbranch': 'FugitiveHead',
       \   'gitgutter': 'LightLineGitGutter',
       \   'readonly': 'LightLineReadonly',
-      \   'tnt': 'LightLineTnt',
-      \   'modified': 'LightLineModified',
       \   'cocstatus': 'coc#status',
       \   'currentfunction': 'CocCurrentFunction',
       \   'filename': 'LightLineFname',
       \   'filetype': 'LightLineFiletype',
       \   'fileformat': 'LightLineFileformat',
       \ },
+      \ 'subseparator': { 'left': '|', 'right': '|' },
       \ 'component_type': {'buffers': 'tabsel'},
       \ }
 
-
-function! s:get_buffer_number()
-  let i = 0
-  for nr in filter(range(1, bufnr('$')), 'bufexists(v:val) && buflisted(v:val)')
-    let i += 1
-    if nr == bufnr('')
-      return i
-    endif
-  endfor
-  return ''
-endfunction
-
 function! LightLineModified()
   if &filetype == "help"
+    return ""
+  elseif &filetype == "defx"
     return ""
   elseif &modified
     return "+"
@@ -59,89 +52,22 @@ function! LightLineModified()
   endif
 endfunction
 
-let g:tnt_text = "   TNT"
-
-function! MyHandler(id)
-  if g:tnt_text == "   TNT"
-    let g:tnt_text = "  TNT "
-    return
-  endif
-  if g:tnt_text == "  TNT "
-    let g:tnt_text = " TNT  "
-    return
-  endif
-  if g:tnt_text == " TNT  "
-    let g:tnt_text = "TNT   "
-    return
-  endif
-  if g:tnt_text == "TNT   "
-    let g:tnt_text = "NT    "
-    return
-  endif
-  if g:tnt_text == "NT    "
-    let g:tnt_text = "T     "
-    return
-  endif
-  if g:tnt_text == "T     "
-    let g:tnt_text = "      "
-    return
-  endif
-  if g:tnt_text == "      "
-    let g:tnt_text = "     T"
-    return
-  endif
-  if g:tnt_text == "     T"
-    let g:tnt_text = "    TN"
-    return
-  endif
-  if g:tnt_text == "    TN"
-    let g:tnt_text = "   TNT"
-    return
-  endif
+function! CocCurrentFunction()
+  return get(b:, 'coc_current_function', '')
 endfunction
-
-let timer = timer_start(500, 'MyHandler', {'repeat': -1})
-function! LightLineTnt()
-  return g:tnt_text
-endfunction
-
 
 function! LightLineReadonly()
   return &readonly && &filetype !~# '\v(help|vimfiler|unite)' ? 'RO' : ''
 endfunction
 
-function! LightLineFugitive()
-  if exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? _ : ''
-  endif
-  return ''
-endfunction
-
-function! LightLineCocError()
-  let error_sign = get(g:, 'coc_status_error_sign', has('mac') ? '❌ ' : 'E')
-  let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info)
-    return ''
-  endif
-  let errmsgs = []
-  if get(info, 'error', 0)
-    call add(errmsgs, error_sign . info['error'])
-  endif
-  return trim(join(errmsgs, ' ') . ' ' . get(g:, 'coc_status', ''))
-endfunction
-
-function! LightLineCocWarn() abort
-  let warning_sign = get(g:, 'coc_status_warning_sign')
-  let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info)
-    return ''
-  endif
-  let warnmsgs = []
-  if get(info, 'warning', 0)
-    call add(warnmsgs, warning_sign . info['warning'])
-  endif
- return trim(join(warnmsgs, ' ') . ' ' . get(g:, 'coc_status', ''))
+function! TNT()
+  let map = { 'V': 'n', "\<C-v>": 'n', 's': 'n', 'v': 'n', "\<C-s>": 'n', 'c': 'n', 'R': 'n'}
+  let mode = get(map, mode()[0], mode()[0])
+  let bgcolor = {'n': [240, '#585858'], 'i': [31, '#0087af']}
+  let color = get(bgcolor, mode, bgcolor.n)
+  exe printf('hi TNTColor ctermfg=196 ctermbg=%d guifg=#88ffff guibg=%s term=bold cterm=bold',
+  \ color[0], color[1])
+  return 'JERRY WANG'
 endfunction
 
 autocmd User CocDiagnosticChange call lightline#update()
@@ -191,7 +117,7 @@ let g:lightline#bufferline#show_number  = 3
 " let g:lightline#bufferline#min_buffer_count = 1
 let g:lightline#bufferline#shorten_path = 1
 let g:lightline#bufferline#enable_devicons = 0
-let g:lightline#bufferline#filename_modifier = ':t'
+" let g:lightline#bufferline#filename_modifier = ':t'
 let g:lightline#bufferline#unnamed      = '[No Name]'
 let g:lightline#bufferline#number_map = {
   \ 0: '₀', 1: '₁', 2: '₂', 3: '₃', 4: '₄',

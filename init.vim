@@ -51,14 +51,17 @@ if dein#load_state('~/.cache/dein')
   call dein#add('skywind3000/asynctasks.vim')
   call dein#add('skywind3000/asyncrun.vim')
 
-  " call dein#add('morhetz/gruvbox')
+  " call dein#add('sainnhe/gruvbox-material')
+  call dein#add('morhetz/gruvbox')
   call dein#add('dracula/vim', {'name': 'dracula', 'normalized_name': 'dracula'})
 
   call dein#add('itchyny/lightline.vim')
   call dein#add('mengelbrecht/lightline-bufferline')
 
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('airblade/vim-gitgutter')
 
-  call dein#add('Konfekt/FastFold')
+  " call dein#add('Konfekt/FastFold')
   call dein#add('wincent/terminus')
   call dein#add('haya14busa/incsearch.vim')
   call dein#add('haya14busa/incsearch-fuzzy.vim')
@@ -131,17 +134,10 @@ if has('persistent_undo')
 endif
 
 
+if !has('gui_running')
+  set t_Co=256
+endif
 
-
-
-set t_Co=256
-
-" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-  " \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-  " \,sm:block-blinkwait175-blinkoff150-blinkon175
-
-" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*/node_modules/*
 " python-mode
@@ -155,16 +151,17 @@ source ~/.config/nvim/config/mapping.vim
 
 source ~/.config/nvim/config/lightline.vim
 
-" let g:loaded_python_provider = 1
-" let g:python3_host_prog  = '/usr/local/Cellar/python/3.7.6_1/bin/python3'
-" let g:python_host_prog  = '/usr/bin/python'
-
 
 
 " autocmd FileType json syntax match Comment +\/\/.\+$+
 "
 
-
+" vim-fugitive
+autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd User fugitive
+  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \   nnoremap <buffer> .. :edit %:h<CR> |
+  \ endif
 
 
 
@@ -180,14 +177,17 @@ source ~/.config/nvim/config/coc.vim
 
 
 "----------------- yankhighlight----------------
-let g:highlightedyank_highlight_duration = 500
+" let g:highlightedyank_highlight_duration = 500
 
 
 if has('nvim')
 endif
-" source ~/.vim/config/defx.vim
+
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark='soft'
 set background=dark
-colorscheme dracula
+" colorscheme dracula
+colorscheme gruvbox
 
 let $NVIM_COC_LOG_LEVEL = 'debug'
 " let g:coc_node_args = ['--nolazy', '--inspect-brk=6046']
@@ -195,32 +195,26 @@ let $NVIM_COC_LOG_LEVEL = 'debug'
 
 " fastfold
 
-nmap zuz <Plug>(FastFoldUpdate)
-let g:fastfold_savehook = 1
-let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
-let g:fastfold_fold_movement_commands = [']z', '[z', 'ze', 'zu']
-let g:markdown_folding = 1
-let g:tex_fold_enabled = 1
-let g:vimsyn_folding = 'af'
-let g:xml_syntax_folding = 1
-let g:javaScript_fold = 1
-let g:sh_fold_enabled= 7
-let g:ruby_fold = 1
-let g:perl_fold = 1
-let g:perl_fold_blocks = 1
-let g:r_syntax_folding = 1
-let g:rust_fold = 1
-let g:php_folding = 1
+" nmap zuz <Plug>(FastFoldUpdate)
+" let g:fastfold_savehook = 1
+" let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+" let g:fastfold_fold_movement_commands = [']z', '[z', 'ze', 'zu']
+" let g:markdown_folding = 1
+" let g:tex_fold_enabled = 1
+" let g:vimsyn_folding = 'af'
+" let g:xml_syntax_folding = 1
+" let g:javaScript_fold = 1
+" let g:sh_fold_enabled= 7
+" let g:ruby_fold = 1
+" let g:perl_fold = 1
+" let g:perl_fold_blocks = 1
+" let g:r_syntax_folding = 1
+" let g:rust_fold = 1
+" let g:php_folding = 1
 
 
 
-" ----------undo tree------------
-" let g:gundo_prefer_python3 = 1
-" let g:gundo_help = 0
-
-" source ~/.vim/config/vim-gutentags.vim
 " -------lightline-----------
-" source ~/.vim/config/lightline.vim
 source ~/.config/nvim/config/abbr.vim
 
 

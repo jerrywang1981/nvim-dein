@@ -11,6 +11,7 @@ hook_add = '''
 # [[plugins]]
 # repo = 'honza/vim-snippets'
 
+# noremap <c-m> :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 
 
 [[plugins]]
@@ -28,11 +29,12 @@ hook_add = '''
   let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
   let g:Lf_ShortcutF = "<c-p>"
+  let g:Lf_ShortcutB = "<leader>fb"
   noremap <c-m> :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
   noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
   noremap <leader>fs :<C-U><C-R>=printf("Leaderf rg --stayOpen %s", "")<CR><CR>
   xnoremap <leader>fs :<C-U><C-R>=printf("Leaderf! rg --stayOpen -F -e %s ", leaderf#Rg#visual())<CR>
-  noremap go :<C-U>Leaderf! rg --recall<CR>
+  noremap <leader>fS :<C-U>Leaderf! rg --recall<CR>
 
   let g:Lf_CommandMap = {'<Tab>': ['<ESC>']}
   let g:Lf_DefaultMode = 'NameOnly'
@@ -60,6 +62,11 @@ hook_add = '''
 '''
 
 
+# [[plugins]]
+# repo = 'tpope/vim-fugitive'
+# hook_source = '''
+  # autocmd BufReadPost fugitive://* set bufhidden=delete
+# '''
 
 [[plugins]]
 repo = 'kassio/neoterm'
@@ -79,8 +86,8 @@ hook_add = 'source ~/.config/nvim/config/nerdcommenter.vim'
 
 
 
-[[plugins]]
-repo = 'MarcWeber/vim-addon-mw-utils'
+# [[plugins]]
+# repo = 'MarcWeber/vim-addon-mw-utils'
 
 
 [[plugins]]

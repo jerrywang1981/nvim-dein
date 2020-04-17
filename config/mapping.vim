@@ -24,16 +24,10 @@ vmap <down> <Nop>
 vmap <left> <Nop>
 vmap <right> <Nop>
 
-
-
-" nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " let g:yankring_replace_n_pkey = '<Char-8804>'
 " let g:yankring_replace_n_nkey = '<Char-8805>'
-
-
-
-
 "
 " For conceal markers.
 if has('conceal')
@@ -94,13 +88,6 @@ endfunc
 
 
 
-" autocmd User fugitive
-  " \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-  " \   nnoremap <buffer> .. :edit %:h<CR> |
-  " \ endif
-"
-
-
 " async run
 " nnoremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
 " nnoremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
@@ -108,8 +95,8 @@ endfunc
 " nnoremap <silent> <F9> :AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
 " nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
 "
-" autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
-" autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
+autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
+autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
 
 
 " let g:SignatureMap = {

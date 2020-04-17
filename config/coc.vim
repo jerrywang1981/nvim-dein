@@ -1,4 +1,4 @@
-let g:coc_global_extensions = ['coc-python', 'coc-sql','coc-emmet','coc-go','coc-html', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-todolist', 'coc-yaml', 'coc-tasks']
+let g:coc_global_extensions = ['coc-python', 'coc-java','coc-json','coc-sql','coc-go', 'coc-emmet','coc-html', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-todolist', 'coc-yaml', 'coc-tasks']
 " let g:coc_node_path = '/path/to/node'
 
 " if hidden is not set, TextEdit might fail.
