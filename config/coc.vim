@@ -1,4 +1,4 @@
-let g:coc_global_extensions = ['coc-python', 'coc-java','coc-json','coc-sql','coc-go', 'coc-emmet','coc-html', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-todolist', 'coc-yaml', 'coc-tasks']
+let g:coc_global_extensions = ['coc-python','coc-neosnippet','coc-java','coc-json','coc-sql','coc-go', 'coc-emmet','coc-html', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-todolist', 'coc-yaml', 'coc-tasks']
 " let g:coc_node_path = '/path/to/node'
 
 " if hidden is not set, TextEdit might fail.
@@ -14,6 +14,12 @@ set updatetime=300
 set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
+
+" inoremap <silent><expr> <TAB>
+      " \ pumvisible() ? coc#_select_confirm() :
+      " \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      " \ <SID>check_back_space() ? "\<TAB>" :
+      " \ coc#refresh()
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -31,15 +37,28 @@ endfunction
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Use `[c` and `]c` for navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
@@ -98,7 +117,8 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Use `:Fold` for fold current buffer
 " command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Using CocList
 " Show all diagnostics
