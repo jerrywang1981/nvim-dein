@@ -1,3 +1,4 @@
+let g:coc_disable_startup_warning=1
 let g:coc_global_extensions = ['coc-python','coc-neosnippet','coc-java','coc-json','coc-sql','coc-go', 'coc-emmet','coc-html', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-todolist', 'coc-yaml', 'coc-tasks']
 " let g:coc_node_path = '/path/to/node'
 
