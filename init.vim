@@ -2,14 +2,6 @@ if &compatible
   set nocompatible
 endif
 
-" let has_machine_specific_file = 1
-" if empty(glob('~/.config/nvim/_machine_specific.vim'))
-"	let has_machine_specific_file = 0
-"	silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
-"endif
-" source ~/.config/nvim/_machine_specific.vim
-
-
 " Add the dein installation directory into runtimepath
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
@@ -38,8 +30,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('wsdjeg/dein-ui.vim')
   call dein#add('easymotion/vim-easymotion')
-  call dein#add('tomtom/tlib_vim')
-  call dein#add('tpope/vim-dispatch')
+  " call dein#add('tomtom/tlib_vim')
+  " call dein#add('tpope/vim-dispatch')
   call dein#add('kshenoy/vim-signature')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-unimpaired')
@@ -48,14 +40,13 @@ if dein#load_state('~/.cache/dein')
   call dein#add('ConradIrwin/vim-bracketed-paste')
 
   call dein#add('wellle/targets.vim')
-  call dein#add('skywind3000/vim-preview')
+  " call dein#add('skywind3000/vim-preview')
 
-  call dein#add('skywind3000/asynctasks.vim')
-  call dein#add('skywind3000/asyncrun.vim')
+  " call dein#add('skywind3000/asynctasks.vim')
+  " call dein#add('skywind3000/asyncrun.vim')
 
-  " call dein#add('sainnhe/gruvbox-material')
   call dein#add('morhetz/gruvbox')
-  call dein#add('dracula/vim', {'name': 'dracula', 'normalized_name': 'dracula'})
+  " call dein#add('dracula/vim', {'name': 'dracula', 'normalized_name': 'dracula'})
 
   call dein#add('itchyny/lightline.vim')
   call dein#add('mengelbrecht/lightline-bufferline')
@@ -63,7 +54,6 @@ if dein#load_state('~/.cache/dein')
   call dein#add('tpope/vim-fugitive')
   call dein#add('airblade/vim-gitgutter')
 
-  " call dein#add('Konfekt/FastFold')
   call dein#add('wincent/terminus')
   call dein#add('haya14busa/incsearch.vim')
   call dein#add('haya14busa/incsearch-fuzzy.vim')
@@ -142,10 +132,6 @@ endif
 
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/venv/*,*/node_modules/*
-" python-mode
-" let g:pymode_python = 'python3'
-
-" autocmd FileType python set ts=4 | set shiftwidth=4 | set softtabstop=4
 
 
 "--------------------mapping-------
@@ -155,8 +141,6 @@ source ~/.config/nvim/config/lightline.vim
 
 
 
-" autocmd FileType json syntax match Comment +\/\/.\+$+
-"
 
 " vim-fugitive
 autocmd BufReadPost fugitive://* set bufhidden=delete
@@ -177,14 +161,6 @@ source ~/.config/nvim/config/coc.vim
 " let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 
 
-
-"----------------- yankhighlight----------------
-" let g:highlightedyank_highlight_duration = 500
-
-
-if has('nvim')
-endif
-
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark='soft'
 set background=dark
@@ -192,11 +168,9 @@ set background=dark
 colorscheme gruvbox
 
 let $NVIM_COC_LOG_LEVEL = 'debug'
-" let g:coc_node_args = ['--nolazy', '--inspect-brk=6046']
 "
 
 
-" -------lightline-----------
 source ~/.config/nvim/config/abbr.vim
 
 
@@ -217,8 +191,3 @@ omap <leader><leader>z <Plug>(easymotion-sn)
 
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-
-" Open the _machine_specific.vim file if it has just been created
-"if has_machine_specific_file == 0
-"	exec "e ~/.config/nvim/_machine_specific.vim"
-" endif
