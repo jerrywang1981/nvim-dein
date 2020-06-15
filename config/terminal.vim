@@ -6,6 +6,8 @@ let g:neoterm_autoscroll = 1
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-v><Esc> <Esc>
 
+set splitbelow splitright
+
 if has('nvim')
   set inccommand=nosplit
   " tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'

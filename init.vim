@@ -46,7 +46,7 @@ if dein#load_state('~/.cache/dein')
   " call dein#add('skywind3000/asyncrun.vim')
 
   call dein#add('morhetz/gruvbox')
-  " call dein#add('dracula/vim', {'name': 'dracula', 'normalized_name': 'dracula'})
+  call dein#add('dracula/vim', {'name': 'dracula', 'normalized_name': 'dracula'})
 
   call dein#add('itchyny/lightline.vim')
   call dein#add('mengelbrecht/lightline-bufferline')
@@ -161,11 +161,11 @@ source ~/.config/nvim/config/coc.vim
 " let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 
 
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark='soft'
+" let g:gruvbox_italic=1
+" let g:gruvbox_contrast_dark='soft'
 set background=dark
-" colorscheme dracula
-colorscheme gruvbox
+colorscheme dracula
+" colorscheme gruvbox
 
 let $NVIM_COC_LOG_LEVEL = 'debug'
 "
