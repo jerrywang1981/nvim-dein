@@ -19,6 +19,9 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+inoremap jk <esc>
+inoremap kj <esc>
+
 vmap <up> <Nop>
 vmap <down> <Nop>
 vmap <left> <Nop>

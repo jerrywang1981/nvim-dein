@@ -39,6 +39,9 @@ if dein#load_state('~/.cache/dein')
   call dein#add('mbbill/undotree')
   call dein#add('ConradIrwin/vim-bracketed-paste')
 
+  call dein#add('jerrywang1981/vim-keysound')
+
+
   call dein#add('wellle/targets.vim')
   " call dein#add('skywind3000/vim-preview')
 

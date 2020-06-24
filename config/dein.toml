@@ -121,8 +121,8 @@ hook_add = 'source ~/.config/nvim/config/nerdcommenter.vim'
 # repo = 'MarcWeber/vim-addon-mw-utils'
 
 
-[[plugins]]
-repo = 'Valloric/ListToggle'
+# [[plugins]]
+# repo = 'Valloric/ListToggle'
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'

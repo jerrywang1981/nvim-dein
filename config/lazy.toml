@@ -65,9 +65,9 @@ on_ft = 'Dockerfile'
   # let g:go_doc_keywordprg_enabled = 0
 # '''
 
-[[plugins]]
-repo = 'junegunn/vim-emoji'
-on_ft = ['markdown','vim']
+# [[plugins]]
+# repo = 'junegunn/vim-emoji'
+# on_ft = ['markdown','vim']
 
 
 # [[plugins]]
@@ -93,9 +93,9 @@ repo = 'HerringtonDarkholme/yats.vim'
 on_ft = ['typescript', 'javascript.jsx', 'javascript']
 
 
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-on_ft = ['typescript', 'javascript']
+# [[plugins]]
+# repo = 'leafgarland/typescript-vim'
+# on_ft = ['typescript', 'javascript']
 
 
 [[plugins]]
@@ -117,9 +117,9 @@ on_ft = ['typescript', 'javascript', 'javascript.jsx']
 # repo = 'isRuslan/vim-es6'
 # on_ft = ['html', 'javascript.jsx','vue','javascript', 'typescript']
 
-[[plugins]]
-repo = 'pangloss/vim-javascript'
-on_ft = ['html', 'javascript.jsx','vue','javascript']
+# [[plugins]]
+# repo = 'pangloss/vim-javascript'
+# on_ft = ['html', 'javascript.jsx','vue','javascript']
 
 # [[plugins]]
 # repo = 'jelera/vim-javascript-syntax'
